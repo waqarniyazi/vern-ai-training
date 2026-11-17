@@ -2,10 +2,20 @@
 // Each session = a title screen, then scenes. Scene types: cards, flow, nest, graph, table, chat, media, poll, reveal, chart, score.
 
 const PRE = {
-  claude: { plan: '/ecc:plan ', grill: '/mattpocock-skills:grilling ', build: '/ecc:prp-implement ', pilot: '/ecc:plan ' },
-  codex: { plan: 'Use the ECC plan skill. ', grill: 'Use the grilling skill. ', build: 'Use the ECC prp-implement skill. ', pilot: 'Use the ECC plan skill. ' },
+  claude: { plan: '/ecc:plan ', grill: '/mattpocock-skills:grilling ', build: '/ecc:prp-implement ', pilot: '/ecc:plan ', setup: '' },
+  codex: { plan: 'Use the ECC plan skill. ', grill: 'Use the grilling skill. ', build: 'Use the ECC prp-implement skill. ', pilot: 'Use the ECC plan skill. ', setup: '' },
 };
 const BODY = {
+  setup: () => `Set up this computer to make videos. Check each item first and install only what is missing.
+Use Homebrew on a Mac and winget on Windows. Ask me before each install.
+1. Node.js 20 or newer.
+2. Git.
+3. Python 3.11.
+4. Remotion skills: npx skills add remotion-dev/skills
+5. Hairline skill: npx skills add lucasmarkes/hairline
+6. Chatterbox, a free voice: make a Python 3.11 virtual environment in this folder, then pip install chatterbox-tts
+7. Prove it works: render a 3-second Remotion test video with one spoken Chatterbox line.
+Finish with a table of what was already there, what you installed, and what failed.`,
   plan: t => `Research this topic on the web: ${t}.
 Then plan a 60-second explainer video from the findings.
 1. Build it with Remotion.
@@ -13,7 +23,7 @@ Then plan a 60-second explainer video from the findings.
 3. Use one three.js 3D scene.
 4. Use a thinking-orbs narrator.
 5. Use hairline charts for any numbers.
-6. Add a voice-over with captions.
+6. Add a Chatterbox voice-over with captions.
 7. Plan the scenes second by second.`,
   grill: () => 'Grill me on this plan before we build. Ask fewer than 5 questions in total, in one round.',
   build: () => 'Build the video from the approved plan. Render it to out/video.mp4 and tell me how long it took.',
@@ -128,8 +138,9 @@ window.WORKSHOP = {
           { logo: 'claude', k: 'Anthropic', t: 'Claude Code', list: ['Comes with Claude Pro.', 'Plugins are added with /plugin.'] },
           { logo: 'codex', k: 'OpenAI', t: 'Codex', list: ['Comes with ChatGPT plans.', 'Skills are added from the terminal.'] },
         ] },
-        { sub: 'The kit', type: 'cards', cols: 1, items: [
+        { sub: 'The kit', type: 'cards', cols: 2, items: [
           { k: 'One page to copy from', t: 'Install commands and prompts, for Claude Code and Codex, Mac and Windows', href: 'kit/' },
+          { logo: 'gh-remotion-dev.png', k: 'Set up for video', t: 'Remotion, Node.js, Python, Chatterbox', d: 'One prompt. It checks, then installs what is missing.', copy: 'setup' },
         ] },
       ] },
 

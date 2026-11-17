@@ -36,6 +36,7 @@
       <div class="cmd" data-tool="claude" data-os="win"><pre>irm https://claude.ai/install.ps1 | iex</pre></div>
       <div class="cmd" data-tool="codex"><pre>npm install -g @openai/codex</pre></div>
       <span class="note" data-tool="codex">Codex needs Node.js first. Get it from nodejs.org.</span>
+      <span class="note" data-tool="claude" data-os="win">Install Git for Windows first, from git-scm.com. Claude Code needs it.</span>
     </li>
     <li>Make a folder for today.
       <div class="cmd"><pre>mkdir ai-workshop</pre></div>
@@ -64,7 +65,16 @@
     <li>Close Codex and start it again.</li>
   </ol>
 
-  <h2><span class="num">03</span>Research to video: three inputs</h2>
+  <h2><span class="num">03</span>Set up for video</h2>
+  <ol>
+    <li>Paste this inside <span data-tool="claude">Claude Code</span><span data-tool="codex">Codex</span>. It checks Node.js, Git, Python, Remotion, Hairline and Chatterbox, and installs only what is missing.
+      <div data-prompt="setup"></div>
+    </li>
+    <li>Allow each install when it asks. The voice download is large, about 2 GB, so start this before the session.</li>
+    <li>It ends with a 3-second test video. If that plays, you are ready.</li>
+  </ol>
+
+  <h2><span class="num">04</span>Research to video: three inputs</h2>
   <ol>
     <li>Pick a topic.
       <div class="switch" role="group" aria-label="Topic" data-topics></div>
@@ -75,23 +85,19 @@
     <li>It asks before it acts. Read each request, then allow it.</li>
   </ol>
 
-  <h2><span class="num">04</span>Optional tools</h2>
-  <p class="note">Only if you want to make videos or agents on your own machine. These need Node.js from nodejs.org.</p>
+  <h2><span class="num">05</span>Optional tools</h2>
   <ol>
-    <li>Remotion, for video.<div class="cmd"><pre>npx skills add remotion-dev/skills</pre></div></li>
-    <li>Hairline, for charts.<div class="cmd"><pre>npx skills add lucasmarkes/hairline</pre></div></li>
     <li>Thinking-orbs, for a narrator. Ask for it in a prompt.
       <div class="cmd"><pre>Add thinking-orbs from github.com/RareFormLabs/thinking-orbs to this project.</pre></div>
     </li>
     <li>three.js, for 3D. Nothing to install. It is added when your prompt asks for a 3D scene.</li>
-    <li>Chatterbox, for a free voice on your machine. Needs Python.<div class="cmd"><pre>pip install chatterbox-tts</pre></div></li>
     <li>Hermes, to run agents.
       <div class="cmd" data-os="mac"><pre>curl -fsSL https://hermes-agent.nousresearch.com/install.sh | bash</pre></div>
       <div class="cmd" data-os="win"><pre>iex (irm https://hermes-agent.nousresearch.com/install.ps1)</pre></div>
     </li>
   </ol>
 
-  <h2><span class="num">05</span>DESIGN.md</h2>
+  <h2><span class="num">06</span>DESIGN.md</h2>
   <ol>
     <li>Go to <a href="https://styles.refero.design/" target="_blank" rel="noopener">styles.refero.design</a> and pick a style you like. It is free.</li>
     <li>Download its DESIGN.md and put it in your project folder.</li>
@@ -100,7 +106,7 @@
     </li>
   </ol>
 
-  <h2><span class="num">06</span>Safe use</h2>
+  <h2><span class="num">07</span>Safe use</h2>
   <ol>
     <li>Never paste client details, pricing, contracts, passwords or keys.</li>
     <li>Open one folder. Never your whole drive.</li>
@@ -110,7 +116,7 @@
     <li>A person checks everything before it goes outside the company.</li>
   </ol>
 
-  <h2><span class="num">07</span>After today: your first agent</h2>
+  <h2><span class="num">08</span>After today: your first agent</h2>
   <ol>
     <li>Fill in the five blanks, then paste.
       <div data-prompt="pilot"></div>
