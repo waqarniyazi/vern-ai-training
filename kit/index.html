@@ -1,0 +1,124 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex">
+<title>Workshop Kit</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&family=JetBrains+Mono&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../style.css">
+</head>
+<body class="kit">
+<main>
+  <p class="kicker">Vernalis AI Agents Workshop</p>
+  <h1>The kit</h1>
+  <p>Everything you copy and paste today, in order. Choose your computer and your tool first.</p>
+  <div class="switches">
+    <div class="switch" role="group" aria-label="Your computer">
+      <span class="label">Computer</span>
+      <button class="pill" data-key="os" data-set="mac">Mac</button>
+      <button class="pill" data-key="os" data-set="win">Windows</button>
+    </div>
+    <div class="switch" role="group" aria-label="Your tool">
+      <span class="label">Tool</span>
+      <button class="pill" data-key="tool" data-set="claude">Claude Code</button>
+      <button class="pill" data-key="tool" data-set="codex">Codex</button>
+    </div>
+  </div>
+
+  <h2><span class="num">01</span>Install</h2>
+  <ol>
+    <li><span data-os="mac">Open the Terminal app.</span><span data-os="win">Open PowerShell.</span></li>
+    <li>Paste this and press Enter.
+      <div class="cmd" data-tool="claude" data-os="mac"><pre>curl -fsSL https://claude.ai/install.sh | bash</pre></div>
+      <div class="cmd" data-tool="claude" data-os="win"><pre>irm https://claude.ai/install.ps1 | iex</pre></div>
+      <div class="cmd" data-tool="codex"><pre>npm install -g @openai/codex</pre></div>
+      <span class="note" data-tool="codex">Codex needs Node.js first. Get it from nodejs.org.</span>
+    </li>
+    <li>Make a folder for today.
+      <div class="cmd"><pre>mkdir ai-workshop</pre></div>
+      <div class="cmd"><pre>cd ai-workshop</pre></div>
+    </li>
+    <li>Start it.
+      <div class="cmd" data-tool="claude"><pre>claude</pre></div>
+      <div class="cmd" data-tool="codex"><pre>codex</pre></div>
+    </li>
+    <li><span data-tool="claude">Sign in with your Claude Pro account when it asks.</span><span data-tool="codex">Sign in with your ChatGPT account when it asks.</span></li>
+  </ol>
+
+  <h2><span class="num">02</span>Add the plugins</h2>
+  <ol data-tool="claude">
+    <li>Paste these inside Claude Code, one line at a time.
+      <div data-prompt="plugins" data-lines></div>
+    </li>
+    <li>Close Claude Code and start it again.</li>
+  </ol>
+  <ol data-tool="codex">
+    <li>Paste these in the terminal, not inside Codex. Choose Codex when it asks which tool.
+      <div class="cmd"><pre>npx skills add mattpocock/skills</pre></div>
+      <div class="cmd"><pre>npx skills add pbakaus/impeccable</pre></div>
+    </li>
+    <li>For ECC, follow the Codex steps at github.com/affaan-m/ECC.</li>
+    <li>Close Codex and start it again.</li>
+  </ol>
+
+  <h2><span class="num">03</span>Research to video: three inputs</h2>
+  <ol>
+    <li>Pick a topic.
+      <div class="switch" role="group" aria-label="Topic" data-topics></div>
+    </li>
+    <li>Plan.<div data-prompt="plan"></div></li>
+    <li>Answer its questions. There will be fewer than five.<div data-prompt="grill"></div></li>
+    <li>Build.<div data-prompt="build"></div></li>
+    <li>It asks before it acts. Read each request, then allow it.</li>
+  </ol>
+
+  <h2><span class="num">04</span>Optional tools</h2>
+  <p class="note">Only if you want to make videos or agents on your own machine. These need Node.js from nodejs.org.</p>
+  <ol>
+    <li>Remotion, for video.<div class="cmd"><pre>npx skills add remotion-dev/skills</pre></div></li>
+    <li>Hairline, for charts.<div class="cmd"><pre>npx skills add lucasmarkes/hairline</pre></div></li>
+    <li>Thinking-orbs, for a narrator. Ask for it in a prompt.
+      <div class="cmd"><pre>Add thinking-orbs from github.com/RareFormLabs/thinking-orbs to this project.</pre></div>
+    </li>
+    <li>three.js, for 3D. Nothing to install. It is added when your prompt asks for a 3D scene.</li>
+    <li>Chatterbox, for a free voice on your machine. Needs Python.<div class="cmd"><pre>pip install chatterbox-tts</pre></div></li>
+    <li>Hermes, to run agents.
+      <div class="cmd" data-os="mac"><pre>curl -fsSL https://hermes-agent.nousresearch.com/install.sh | bash</pre></div>
+      <div class="cmd" data-os="win"><pre>iex (irm https://hermes-agent.nousresearch.com/install.ps1)</pre></div>
+    </li>
+  </ol>
+
+  <h2><span class="num">05</span>DESIGN.md</h2>
+  <ol>
+    <li>Go to <a href="https://styles.refero.design/" target="_blank" rel="noopener">styles.refero.design</a> and pick a style you like. It is free.</li>
+    <li>Download its DESIGN.md and put it in your project folder.</li>
+    <li>Add one line to any prompt.
+      <div class="cmd"><pre>Follow DESIGN.md for colours and type.</pre></div>
+    </li>
+  </ol>
+
+  <h2><span class="num">06</span>Safe use</h2>
+  <ol>
+    <li>Never paste client details, pricing, contracts, passwords or keys.</li>
+    <li>Open one folder. Never your whole drive.</li>
+    <li>Read every request before you allow it. Never “allow all”.</li>
+    <li data-tool="claude">In Claude settings, turn off “Help improve Claude”.</li>
+    <li>Use DeepSeek through <a href="https://openrouter.ai/settings/privacy">OpenRouter</a>, not its own app. In OpenRouter’s privacy settings, block providers that train on your data, and block DeepSeek as a provider.</li>
+    <li>A person checks everything before it goes outside the company.</li>
+  </ol>
+
+  <h2><span class="num">07</span>After today: your first agent</h2>
+  <ol>
+    <li>Fill in the five blanks, then paste.
+      <div data-prompt="pilot"></div>
+    </li>
+    <li>Share what you built in the team channel.</li>
+  </ol>
+</main>
+<script src="../content.js"></script>
+<script src="../kit.js"></script>
+</body>
+</html>
