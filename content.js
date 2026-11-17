@@ -2,8 +2,8 @@
 // Each session = a title screen, then scenes. Scene types: cards, flow, nest, graph, table, chat, media, poll, reveal, chart, score.
 
 const PRE = {
-  claude: { plan: '/ecc:plan ', grill: '/mattpocock-skills:grilling ', build: '/ecc:prp-implement ', pilot: '/ecc:plan ', setup: '' },
-  codex: { plan: 'Use the ECC plan skill. ', grill: 'Use the grilling skill. ', build: 'Use the ECC prp-implement skill. ', pilot: 'Use the ECC plan skill. ', setup: '' },
+  claude: { plan: '/ecc:plan ', grill: '/mattpocock-skills:grilling ', build: '/ecc:prp-implement ', pilot: '/ecc:plan ', setup: '', video: '/ecc:plan ', render: '/ecc:prp-implement ' },
+  codex: { plan: 'Use the ECC plan skill. ', grill: 'Use the grilling skill. ', build: 'Use the ECC prp-implement skill. ', pilot: 'Use the ECC plan skill. ', setup: '', video: 'Use the ECC plan skill. ', render: 'Use the ECC prp-implement skill. ' },
 };
 const BODY = {
   setup: () => `Set up this computer to make videos. Check each item first and install only what is missing.
@@ -17,6 +17,13 @@ Use Homebrew on a Mac and winget on Windows. Ask me before each install.
 7. Prove it works: render a 3-second Remotion test video with one spoken Chatterbox line.
 Finish with a table of what was already there, what you installed, and what failed.`,
   plan: t => `Research this topic on the web: ${t}.
+Then plan a one-page research brief from the findings.
+1. Five key findings, each with its source linked.
+2. The numbers that matter, in one small table.
+3. What is still unclear or disputed.
+4. Only sources you actually opened. Mark anything you could not confirm.
+5. Save it as research.html. If this folder has a DESIGN.md, follow it for colours and type.`,
+  video: t => `Research this topic on the web: ${t}.
 Then plan a 60-second explainer video from the findings.
 1. Build it with Remotion.
 2. Follow DESIGN.md for colours and type.
@@ -26,7 +33,8 @@ Then plan a 60-second explainer video from the findings.
 6. Add a Chatterbox voice-over with captions.
 7. Plan the scenes second by second.`,
   grill: () => 'Grill me on this plan before we build. Ask fewer than 5 questions in total, in one round.',
-  build: () => 'Build the video from the approved plan. Render it to out/video.mp4 and tell me how long it took.',
+  build: () => 'Write the research brief from the approved plan, then open research.html in my browser.',
+  render: () => 'Build the video from the approved plan. Render it to out/video.mp4 and tell me how long it took.',
   pilot: () => `Build a first version of this agent with Hermes.
 1. Agent name: [NAME]
 2. Its job, in one line: [JOB]
@@ -138,9 +146,8 @@ window.WORKSHOP = {
           { logo: 'claude', k: 'Anthropic', t: 'Claude Code', list: ['Comes with Claude Pro.', 'Plugins are added with /plugin.'] },
           { logo: 'codex', k: 'OpenAI', t: 'Codex', list: ['Comes with ChatGPT plans.', 'Skills are added from the terminal.'] },
         ] },
-        { sub: 'The kit', type: 'cards', cols: 2, items: [
+        { sub: 'The kit', type: 'cards', cols: 1, items: [
           { k: 'One page to copy from', t: 'Install commands and prompts, for Claude Code and Codex, Mac and Windows', href: 'kit/' },
-          { logo: 'gh-remotion-dev.png', k: 'Set up for video', t: 'Remotion, Node.js, Python, Chatterbox', d: 'One prompt. It checks, then installs what is missing.', copy: 'setup' },
         ] },
       ] },
 
@@ -149,10 +156,10 @@ window.WORKSHOP = {
       scenes: [
         { sub: 'Three topics', type: 'poll' },
         { sub: 'Three inputs to Claude Code', type: 'flow', nodes: [
-          { k: '1', icon: 'tools', t: 'Plan', d: '/ecc:plan researches the topic and plans the video.' },
+          { k: '1', icon: 'tools', t: 'Plan', d: '/ecc:plan researches the topic and plans the brief.' },
           { k: '2', logo: 'aihero.png', t: 'Questions', d: 'Grilling asks fewer than five.' },
           { k: '3', icon: 'tools', t: 'Build', d: '/ecc:prp-implement builds from the plan.' },
-          { icon: 'play', t: 'A 60-second video', tone: 'amber' },
+          { icon: 'doc', t: 'A one-page research brief', tone: 'amber' },
         ] },
       ] },
 
@@ -168,9 +175,9 @@ window.WORKSHOP = {
           { icon: 'play', t: 'MP4', d: 'out/video.mp4', tone: 'amber' },
         ] },
         { sub: 'The three inputs', type: 'cards', items: [
-          { icon: 'tools', k: '1 · /ecc:plan', t: 'Plan', d: 'Researches the chosen topic and plans the video scene by scene.', copy: 'plan' },
+          { icon: 'tools', k: '1 · /ecc:plan', t: 'Plan', d: 'Researches the chosen topic and plans the video scene by scene.', copy: 'video' },
           { logo: 'aihero.png', k: '2 · /mattpocock-skills:grilling', t: 'Questions', d: 'Fewer than five questions, in one round.', copy: 'grill' },
-          { icon: 'tools', k: '3 · /ecc:prp-implement', t: 'Build', d: 'Builds the scenes and renders the video.', copy: 'build' },
+          { icon: 'tools', k: '3 · /ecc:prp-implement', t: 'Build', d: 'Builds the scenes and renders the video.', copy: 'render' },
         ] },
         { sub: 'What Claude does while we wait', type: 'cards', items: [
           { icon: 'search', t: 'Searches and reads', d: 'Opens web sources and keeps the links.' },
