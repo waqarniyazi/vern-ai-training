@@ -16,13 +16,25 @@ Use Homebrew on a Mac and winget on Windows. Ask me before each install.
 6. Chatterbox, a free voice: make a Python 3.11 virtual environment in this folder, then pip install chatterbox-tts
 7. Prove it works: render a 3-second Remotion test video with one spoken Chatterbox line.
 Finish with a table of what was already there, what you installed, and what failed.`,
-  plan: t => `Research this topic on the web: ${t}.
-Then plan a one-page research brief from the findings.
-1. Five key findings, each with its source linked.
-2. The numbers that matter, in one small table.
-3. What is still unclear or disputed.
-4. Only sources you actually opened. Mark anything you could not confirm.
-5. Save it as research.html. If this folder has a DESIGN.md, follow it for colours and type.`,
+  plan: t => `Plan a research report on this topic: ${t}.
+Scope
+1. Break the topic into 4 to 6 research questions. Answer each one.
+2. Use at least 12 sources. Prefer official statistics, government and trade bodies, company filings, academic papers and major news. Use blogs only to find leads.
+3. Note the date of every source. Prefer the last 3 years unless the topic is historical.
+Rules
+4. Only cite pages you actually opened. Never invent a number, quote or link.
+5. Every claim gets a source. Where sources disagree, show both sides.
+6. Rate each finding: Confirmed (2 or more good sources), Likely (1 good source) or Unverified.
+Output: research.html, a report I can read in the browser, and research.md with the same content.
+7. Executive summary: 5 bullets, the answer first.
+8. Key findings: one section per research question, each with its evidence, rating and sources.
+9. Numbers: a table with figure, year, unit and source. A chart where it helps.
+10. Timeline of key events, if the topic has one.
+11. Who matters: the main countries, companies, people or bodies, and their role.
+12. What this means for a trading and consulting company like ours: opportunities and risks.
+13. Open questions and what would settle them.
+14. Sources: title, publisher, date and link, numbered and cited in the text.
+15. If this folder has a DESIGN.md, follow it for colours and type.`,
   video: t => `Research this topic on the web: ${t}.
 Then plan a 60-second explainer video from the findings.
 1. Build it with Remotion.
@@ -33,7 +45,7 @@ Then plan a 60-second explainer video from the findings.
 6. Add a Chatterbox voice-over with captions.
 7. Plan the scenes second by second.`,
   grill: () => 'Grill me on this plan before we build. Ask fewer than 5 questions in total, in one round.',
-  build: () => 'Write the research brief from the approved plan, then open research.html in my browser.',
+  build: () => 'Write the research report from the approved plan. Before you finish, check every number and quote against its source and fix or remove anything that does not match. Then open research.html in my browser and list what you could not confirm.',
   render: () => 'Build the video from the approved plan. Render it to out/video.mp4 and tell me how long it took.',
   pilot: () => `Build a first version of this agent with Hermes.
 1. Agent name: [NAME]
@@ -156,10 +168,10 @@ window.WORKSHOP = {
       scenes: [
         { sub: 'Three topics', type: 'poll' },
         { sub: 'Three inputs to Claude Code', type: 'flow', nodes: [
-          { k: '1', icon: 'tools', t: 'Plan', d: '/ecc:plan researches the topic and plans the brief.' },
+          { k: '1', icon: 'tools', t: 'Plan', d: '/ecc:plan breaks the topic into questions and plans the report.' },
           { k: '2', logo: 'aihero.png', t: 'Questions', d: 'Grilling asks fewer than five.' },
           { k: '3', icon: 'tools', t: 'Build', d: '/ecc:prp-implement builds from the plan.' },
-          { icon: 'doc', t: 'A one-page research brief', tone: 'amber' },
+          { icon: 'doc', t: 'A sourced research report', tone: 'amber' },
         ] },
       ] },
 
